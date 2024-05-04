@@ -8,10 +8,10 @@ fun main() {
 
 fun task1() {
     val commissionTax = 0.75
-    val amount = 2000
+    val amount = 20000
     val min = 35
 
-    val commissionValue = (amount / 100 * commissionTax).toInt()
+    val commissionValue = (amount * (commissionTax / 100)).toInt()
     val result = max(commissionValue, min)
     // или
 //    val result = if (commissionValue < min) min else commissionValue
@@ -20,9 +20,9 @@ fun task1() {
 }
 
 fun task2() {
-    val likes = 21
+    val likes = 81
     var str = "людям"
-    if (likes % 10 == 1 && likes != 11) {
+    if (likes % 10 == 1 && likes != 11 && likes % 100 != 11) {
         str = "человеку"
     }
     if (likes > 0) println("Понравилось $likes $str") else println("Еще нет лайков")
@@ -33,13 +33,12 @@ fun task3() {
     val isRegularCustomer = true
     val saleMax = 0.05
     val saleStandard = 100
-    var result = 0
-    if (amount > 10_000) {
-        result = Math.round(amount * (1 - saleMax)).toInt()
+    var result = if (amount > 10_000) {
+        Math.round(amount * (1 - saleMax)).toInt()
     } else if (amount > 1000) {
-        result = amount - saleStandard
+        amount - saleStandard
     } else {
-        result = amount
+        amount
     }
 
     if (isRegularCustomer) {
